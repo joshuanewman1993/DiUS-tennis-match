@@ -2,7 +2,6 @@
 
 This is a tennis match scoring system which has been built using JavaScript.
 
-
 ### Getting Started
 
 `git clone - git@github.com:joshuanewman1993/DiUS-tennis-match.git`
@@ -21,11 +20,17 @@ This is a tennis match scoring system which has been built using JavaScript.
 
  `npm test` to run the tests
 
-### Class Structure
+## Class Structure
 
 Match.js is a class that controls a tennis match.
 
 Player.js is class that controls the player's.
+
+## Tennis games
+
+There is a `games` folder which contains a variety of different tennis games outcomes.
+
+To access these simply `cd games` and run each file. There were used to test the match logic.
 
 ## Author
 
