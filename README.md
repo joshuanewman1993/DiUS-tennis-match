@@ -7,7 +7,7 @@ This is a tennis match scoring system which has been built using JavaScript.
 
 `git clone - git@github.com:joshuanewman1993/DiUS-tennis-match.git`
 
-`cd duis-tennis-tech-test`
+`cd DiUS-tennis-match`
 
 ## Setup
 
