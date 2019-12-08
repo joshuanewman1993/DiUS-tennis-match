@@ -68,4 +68,22 @@ describe('Match outcomes', () => {
             expect(match.players[1].games).to.equal(6);
         });
     });
+    describe('Game 5-6 goes to extra game', () => {
+        it('should win the match by winning tie-break', () => {
+            match.players[0].games = 5;
+            match.players[1].games = 6;
+            const result = match.score();
+            expect(result).to.equal('Games: 5-6 Points: 0-0');
+
+            match.pointWonBy("peter");
+            match.pointWonBy("peter");
+            match.pointWonBy("peter");
+            match.pointWonBy("peter");
+
+            const secondResult = match.score();
+            expect(secondResult).to.equal('Game over: Score 5 - 7');
+            expect(match.players[0].games).to.equal(5);
+            expect(match.players[1].games).to.equal(7);
+        });
+    });
 });
