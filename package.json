@@ -1,0 +1,25 @@
+{
+  "name": "duis-tennis-tech-test",
+  "version": "1.0.0",
+  "description": "tennis-game",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "mocha --bail tests/*.test.js",
+    "lint": "eslint ./src --fix"
+  },
+  "author": "joshuanewman1993@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.2.2"
+  },
+  "devDependencies": {
+    "eslint": "^6.7.2",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1"
+  }
+}
