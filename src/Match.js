@@ -2,7 +2,7 @@ const Player = require('./Player');
 
 module.exports = class Match {
   constructor(player1, player2) {
-    
+
     /* Initializes players to start the game */
     this.players = [new Player(player1), new Player(player2)];
 
@@ -20,50 +20,52 @@ module.exports = class Match {
     const pointWinner = this.players.find(player => player.playerName === pointWinnerName);
     const pointLoser = this.players.find(player => player.playerName !== pointWinnerName);
 
+    /* Works out if the match has been won already */
     if (this.gameOver) {
       return;
     }
 
+    /* If the match is in a tie-break it will hit this logic */
     if (this.tieBreak) {
       pointWinner.winPoint();
       if (pointWinner.points - pointLoser.points === 2) {
-         this.tieBreakWinner(pointWinner);
-         this.gameRestart();
-         return;
+        this.tieBreakWinner(pointWinner);
+        this.gameRestart();
+        return;
       }
       return;
     }
 
     /* Regular point in the game */
-    if (pointWinner.points < 3 && pointWinner.games < 6) {
+    if (pointWinner.points < 3 && pointWinner.games <= 6) {
       pointWinner.winPoint();
       return;
     };
 
+    /* If the player who has just won the point already has the advantage the game has been won */
     if (pointWinner.hasAdvantage) {
       this.gameWonBy(pointWinner);
       this.gameRestart();
-
       return;
     };
 
-    if (pointLoser.advantage) {
+    /* If the loser of the point had the advantage then it advantage is lost and returned back to deuce */
+    if (pointLoser.hasAdvantage) {
       pointLoser.losesAdvantage();
       pointLoser.losePoint();
       return;
     };
 
+    /* Regular point */
     if (pointWinner.points === 3) {
-      /* game won */
       if (pointLoser.points < 3) {
-        /* player wins game, the other one loses */
         this.gameWonBy(pointWinner);
         this.gameRestart();
+        return;
       };
 
       /* advantage to the point winner */
       if (pointLoser.points === 3) {
-        /* player wins point */
         pointWinner.winPoint();
         pointWinner.winsAdvantage();
         return;
@@ -85,7 +87,7 @@ module.exports = class Match {
       return 'Advantage ' + this.players[1].playerName;
     };
 
-    if (this.players[0].points && this.players[1].points === 3) {
+    if (this.players[0].points === 3 && this.players[1].points === 3) {
       return 'Deuce';
     };
     if (this.gameOver) {
@@ -132,10 +134,10 @@ module.exports = class Match {
     };
 
     /* logic to handle if a player has one the match */
-    if (this.players[0].games === 6 && this.players[0].games - this.players[1].games >= 2) {
+    if (this.players[0].games >= 6 && this.players[0].games - this.players[1].games >= 2) {
       return true;
     };
-    if (this.players[1].games === 6 && this.players[1].games - this.players[0].games >= 2) {
+    if (this.players[1].games >= 6 && this.players[1].games - this.players[0].games >= 2) {
       return true;
     };
     return false;
