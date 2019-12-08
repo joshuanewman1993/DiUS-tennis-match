@@ -12,8 +12,8 @@ module.exports = class Player {
     this.points++;
   }
 
-  /* player looses a point */
-  loosePoint() {
+  /* player loses a point */
+  losePoint() {
     this.points--;
   }
 

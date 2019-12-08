@@ -49,7 +49,7 @@ module.exports = class Match {
 
     if (pointLoser.advantage) {
       pointLoser.losesAdvantage();
-      pointLoser.loosePoint();
+      pointLoser.losePoint();
       return;
     };
 

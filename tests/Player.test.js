@@ -25,7 +25,7 @@ describe('Player tests', () => {
 
     it('should deduct a point successfully', () => {
         player.points = 3;
-        player.loosePoint();
+        player.losePoint();
         expect(player.points).to.equal(2);
     });
     it('should add the advantage to the player successfully', () => {
